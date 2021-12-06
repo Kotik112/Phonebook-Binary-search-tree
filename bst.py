@@ -1,41 +1,43 @@
 
 class Node:
-    def __init__(self, key) -> None:
+    def __init__(self, first_name, second_name, phone_nr) -> None:
         self.left = None
         self.right = None
-        self.val = key
+        self.first_name = first_name
+        self.second_name = second_name
+        self.phone_nr = phone_nr
 
 
-def search(root, key):
+def search(root, first_name):
     """Search throught the BST with the help of a given key"""
 
     #if root is null/empty
-    if root is None or root.val == key:
+    if root is None or root.first_name == first_name:
         return root
 
     #Key is greater than root key
-    if root.val < key:
-        return search(root.right, key)
+    if root.first_name < first_name:
+        return search(root.right, first_name)
 
     #key is smaller than root's key
-    return search(root.left, key)
+    return search(root.left, first_name)
 
 
-def insert(root, key):
+def insert(root, first_name, second_name, phone_nr):
     """Insert a key into the BST"""
     if root is None:
-        return Node(key)
+        return Node(first_name, second_name, phone_nr)
 
     else:
-        if root.val == key:
+        if root.first_name == first_name:
             return root
 
         #if key is greater than current node key.
-        elif root.val < key:
-            root.right = insert(root.right, key)
+        elif root.first_name < first_name:
+            root.right = insert(root.right, first_name, second_name, phone_nr)
 
         else:
-            root.left = insert(root.left, key)
+            root.left = insert(root.left, first_name, second_name, phone_nr)
         
     return root
 
@@ -45,7 +47,7 @@ def inorder(root):
     """Prints the BST in ascending order."""
     if root:
         inorder(root.left)
-        print(root.val)
+        print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}")
         inorder(root.right)
 
 

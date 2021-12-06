@@ -10,7 +10,6 @@ def main():
         match menu_choice:
             case Menu.ADD:
                 first_name, second_name, phone_nr = phonebook_input()
-                #Insert into root.key here
                 bst = insert()
 
             case Menu.SEARCH:
