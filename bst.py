@@ -7,39 +7,42 @@ class Node:
         self.second_name = second_name
         self.phone_nr = phone_nr
 
+    def __repr__(self) -> str:
+        return f"Name: {self.first_name} {self.second_name}\nPhone number: {self.phone_nr}"
 
-def search(root, first_name):
+
+def search(node, first_name) -> Node:
     """Search throught the BST with the help of a given key"""
 
     #if root is null/empty
-    if root is None or root.first_name == first_name:
-        return root
+    if node is None or node.first_name == first_name:
+        return node
 
     #Key is greater than root key
-    if root.first_name < first_name:
-        return search(root.right, first_name)
+    if node.first_name < first_name:
+        return search(node.right, first_name)
 
     #key is smaller than root's key
-    return search(root.left, first_name)
+    return search(node.left, first_name)
 
 
-def insert(root, first_name, second_name, phone_nr):
+def insert(node, first_name, second_name, phone_nr):
     """Insert a key into the BST"""
-    if root is None:
+    if node is None:
         return Node(first_name, second_name, phone_nr)
 
     else:
-        if root.first_name == first_name:
-            return root
+        if node.first_name == first_name:
+            return node
 
         #if key is greater than current node key.
-        elif root.first_name < first_name:
-            root.right = insert(root.right, first_name, second_name, phone_nr)
+        elif node.first_name < first_name:
+            node.right = insert(node.right, first_name, second_name, phone_nr)
 
         else:
-            root.left = insert(root.left, first_name, second_name, phone_nr)
+            node.left = insert(node.left, first_name, second_name, phone_nr)
         
-    return root
+    return node
 
 
 #Hur funkar denna?
@@ -50,25 +53,76 @@ def inorder(root):
         print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}")
         inorder(root.right)
 
+def min_value_node(node):
+    """Finds the node with the smallest value from current node"""
+    current = node
+    while current.left is not None:
+        current = current.left
+
+    return current
+
+def delete_node(root, first_name):
+    """Deletes a node from the BST"""
+    #Base case
+    if root is None:
+        return root
+
+    #If first name is less than root first name
+    #Then the first name is in the side side of the BST
+    if first_name < root.first_name:
+        root.left = delete_node(root.left, first_name)
+
+    elif first_name > root.first_name:
+        root.right = delete_node(root.right, first_name)
+
+    else:
+        #Nodes with only one child or no children/leaf.
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+
+        temp = min_value_node(root.right)
+        
+        root.first_name = temp.first_name
+        root.second_name = temp.second_name
+        root.phone_nr = temp.phone_nr
+
+        #Delete the inorder successor.
+        root.right = delete_node(root.right, temp.first_name)
 
 #For resting purposes
 def main():
-    #    50
-    #  /     \
-    # 30     70
-    #  / \ / \
+    #     50
+    #    /  \
+    #  30    70
+    #  / \   / \
     # 20 40 60 80
     
-    r = Node(50)
-    r = insert(r, 30)
-    r = insert(r, 20)
-    r = insert(r, 40)
-    r = insert(r, 70)
-    r = insert(r, 60)
-    r = insert(r, 80)
-    
-    # Print inoder traversal of the BST
+#    r = Node(50)
+#    r = insert(r, 30)
+#    r = insert(r, 20)
+#    r = insert(r, 40)
+#    r = insert(r, 70)
+#    r = insert(r, 60)
+#    r = insert(r, 80)
+
+    r = Node("Pappa", "Efternamn", 12345)
+    r = insert(r, "Arman", "Iqbal", 7654321)
+    r = insert(r, "Xena", "Princess", 1726758)
+    r = insert(r, "Zebra", "Svenson", 771628)
+
+  
+    # Print in order traversal of the BST
     inorder(r)
+
+    node = search(r, "Arman")
+    print(node)
 
 if __name__ == "__main__":
     main()
