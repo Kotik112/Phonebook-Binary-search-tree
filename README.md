@@ -19,8 +19,11 @@ Ni skall skriva era egna implementationer av datastrukturer/algoritmer, inte anv
 
 2.2. Krav på lösningen
 
-Det skall gå att lägga till personer och söka efter personer. Sökningen skall vara O(log n). 
-Det skall också gå att skriva ut en sorterad lista på alla namn/nummer. Det skall gå att läsa in en fil på det här formatet:
+- Det skall gå att lägga till personer och söka efter personer. 
+- Sökningen skall vara O(log n). 
+- Det skall också gå att skriva ut en sorterad lista på alla namn/nummer. 
+- Det skall gå att läsa in en fil på det här formatet:
+
 
 firstName lastName
 070XXXXXXX
@@ -29,6 +32,8 @@ firstName2 lastName2
 073XXXXXX
 
 osv...
+
+
 
 3. Krav för väl godkänt
 
