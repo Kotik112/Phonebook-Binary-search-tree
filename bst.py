@@ -63,6 +63,7 @@ def min_value_node(node):
 
 def delete_node(root, first_name):
     """Deletes a node from the BST"""
+    #print(f"\nDelete result: {first_name}.")
     #Base case
     if root is None:
         return root
@@ -122,7 +123,13 @@ def main():
     inorder(r)
 
     node = search(r, "Arman")
+    print("\nSearch result:")
     print(node)
+
+    
+    r = delete_node(r, "Arman")
+
+    inorder(r)
 
 if __name__ == "__main__":
     main()
