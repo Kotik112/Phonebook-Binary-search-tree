@@ -46,6 +46,7 @@ def main_menu():
     print("6.   Exit program.")
 
 def read_file(filename) -> Node:
+    """Read File"""
     f = open(filename, "r")
     #Felhantera
     name_line = f.readline()
