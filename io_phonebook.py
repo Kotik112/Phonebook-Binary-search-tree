@@ -28,7 +28,13 @@ def phonebook_input():
 
 def name_input():
     #input for first name
-    first_name = input("Enter the first name: ")
+    try:
+        first_name = input("Enter the first name: ")
+        if not first_name:
+            raise(ValueError("Empty string."))
+    except ValueError as e:
+        print(e)
+        
     if first_name.isdigit():
         print("The first name cannot be numeric.")
         return None
@@ -48,13 +54,17 @@ def main_menu():
 def read_file(filename) -> Node:
     """Read File"""
     f = open(filename, "r")
-    #Felhantera
-    name_line = f.readline()
-    name = name_line.split(" ", 1)
-    first_name = name[0]
-    second_name = name[1]
-
-    phone_nr = f.readline()
+    if f == None:
+        print(f"Could not open {filename}.")
+    file_contents = f.readlines()
+    count = 0
+    for line in file_contents:
+        if count % 2 == 0:
+            name = line.split(" ", 1)
+            first_name = name[0]
+            second_name = name[1]
+        else:
+            phone_nr = line
 
     r = Node(first_name, second_name, phone_nr)
 
