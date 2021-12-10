@@ -124,7 +124,7 @@ def main():
 
     node = search(r, "Arman")
     print("\nSearch result:")
-    print(node)
+    print(node) 
 
     
     r = delete_node(r, "Arman")
