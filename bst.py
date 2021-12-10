@@ -31,19 +31,13 @@ def insert(node, first_name, second_name, phone_nr):
     if node is None:
         return Node(first_name, second_name, phone_nr)
 
+    if first_name < node.first_name:
+        node.left = insert(node.left, first_name, second_name, phone_nr)
     else:
-        if node.first_name == first_name:
-            return node
-
-        #if key is greater than current node key.
-        elif node.first_name < first_name:
-            node.right = insert(node.right, first_name, second_name, phone_nr)
-
-        else:
-            node.left = insert(node.left, first_name, second_name, phone_nr)
-        
+        node.right = insert(node.right, first_name, second_name, phone_nr)
+    
+    #return (unchanged) node pointer
     return node
-
 
 #Hur funkar denna?
 def inorder(root):
@@ -56,6 +50,8 @@ def inorder(root):
 def min_value_node(node):
     """Finds the node with the smallest value from current node"""
     current = node
+
+    #loop down to find the leftmost leaf.
     while current.left is not None:
         current = current.left
 
@@ -63,7 +59,7 @@ def min_value_node(node):
 
 def delete_node(root, first_name):
     """Deletes a node from the BST"""
-    #print(f"\nDelete result: {first_name}.")
+    print(f"\nDelete result: {first_name}.")
     #Base case
     if root is None:
         return root
@@ -73,6 +69,8 @@ def delete_node(root, first_name):
     if first_name < root.first_name:
         root.left = delete_node(root.left, first_name)
 
+    #If the name to be deleted is greater than the
+    #root's first name. Then search right side of BST
     elif first_name > root.first_name:
         root.right = delete_node(root.right, first_name)
 
@@ -90,12 +88,15 @@ def delete_node(root, first_name):
 
         temp = min_value_node(root.right)
         
+        #Copy temp node to destination node
         root.first_name = temp.first_name
         root.second_name = temp.second_name
         root.phone_nr = temp.phone_nr
 
         #Delete the inorder successor.
         root.right = delete_node(root.right, temp.first_name)
+
+    return root
 
 #For resting purposes
 def main():
@@ -126,7 +127,7 @@ def main():
     print("\nSearch result:")
     print(node)
 
-    
+    #inorder(r)
     r = delete_node(r, "Arman")
 
     inorder(r)
