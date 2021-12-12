@@ -1,5 +1,17 @@
 from typing import List
 
+
+class Node:
+    def __init__(self, first_name, second_name, phone_nr) -> None:
+        self.left = None
+        self.right = None
+        self.first_name = first_name
+        self.second_name = second_name
+        self.phone_nr = phone_nr
+
+    def __repr__(self) -> str:
+        return f"\nName: {self.first_name} {self.second_name}\nPhone number: {self.phone_nr}"
+
 def set_with_fill(list, elem, idx):
     """Inserts or replaces an element into a list at a given index. Fills out 
     all the empty spots up to the element's index with None"""
@@ -16,17 +28,6 @@ def list_get(list, idx, default):
     else:
         return default
             
-class Node:
-    def __init__(self, first_name, second_name, phone_nr) -> None:
-        self.left = None
-        self.right = None
-        self.first_name = first_name
-        self.second_name = second_name
-        self.phone_nr = phone_nr
-
-    def __repr__(self) -> str:
-        return f"\nName: {self.first_name} {self.second_name}\nPhone number: {self.phone_nr}"
-
 
 def search(node, first_name) -> Node:
     """Search throught the BST with the help of a given key"""
@@ -61,7 +62,7 @@ def inorder(root):
     """Prints the BST in ascending order."""
     if root:
         inorder(root.left)
-        print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}")
+        print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}\n")
         inorder(root.right)
 
 def assign_row(current: Node, row: int = 0) -> None:
@@ -166,35 +167,6 @@ def delete_node(root, first_name):
 
     return root
 
-""" def printLevelOrder(root):
-    h = height(root)
-    for i in range(1, h+1):
-        printCurrentLevel(root, i) """
- 
- 
-""" # Print nodes at a current level
-def printCurrentLevel(root, level):
-    if root is None:
-        return "NULL"
-    if level == 1:
-        print(root.first_name, end=" ")
-    elif level > 1:
-        printCurrentLevel(root.left, level-1)
-        printCurrentLevel(root.right, level-1)
- 
-def height(node):
-    if node is None:
-        return 0
-    else:
-        # Compute the height of each subtree
-        lheight = height(node.left)
-        rheight = height(node.right)
- 
-        # Use the larger one
-        if lheight > rheight:
-            return lheight+1
-        else:
-            return rheight+1 """
  
 
 #For resting purposes

@@ -2,8 +2,7 @@
 # 1. Self balancing tree.
 
 from bst import Node, delete_node, search, insert, inorder, print_tree
-from io_phonebook import phonebook_input, name_input, main_menu, read_file
-from phonebook import Entry
+from phonebook import phonebook_input, name_input, main_menu, read_file
 
 def main():
 
@@ -16,7 +15,6 @@ def main():
         #Add a new entry to the BST.
         if menu_choice == 1:
             first_name, second_name, phone_nr = phonebook_input()
-            #phonebook_entry = Entry(first_name, second_name, phone_nr)
             bst = insert(bst, first_name, second_name, phone_nr)
             
 
@@ -58,4 +56,8 @@ def main():
             print("Invalid choice. Your options are 1-6.")
         
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+
+    except ValueError as e:
+        print(e)
