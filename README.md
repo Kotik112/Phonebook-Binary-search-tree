@@ -34,7 +34,6 @@ firstName2 lastName2
 osv...
 
 
-
 3. Krav för väl godkänt
 
 Det skall gå att ta bort personer ur trädet. Man skall kunna skriva ut trädet
