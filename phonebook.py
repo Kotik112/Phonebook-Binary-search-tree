@@ -51,8 +51,7 @@ def read_file(filename) -> Node:
     """Read File"""
     f = open(filename, "r")
     if f == None:
-        print(f"Could not open {filename}.")
-        raise 
+        raise ValueError(f"Could not open {filename}.")
 
     lines = f.readlines()
     names = [] 
