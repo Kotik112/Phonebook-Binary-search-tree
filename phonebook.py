@@ -1,4 +1,4 @@
-class Phonebook:
+class Entry:
     def __init__(self, first_name, second_name, phone_nr) -> None:
         self.first_name = first_name
         self.second_name = second_name

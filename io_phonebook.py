@@ -1,4 +1,5 @@
-from bst import Node
+
+from bst import Node, insert, inorder #Remove inorder, testing only
 
 def phonebook_input():
     """Takes input for the phone book entry."""
@@ -44,27 +45,41 @@ def name_input():
 
 def main_menu():
     print("*"*10 + " Main Menu " + "*"*10 + "\n")
-    print("1.   Add a new entry into the BST phonebook.")
-    print("2.   Search for an entry.")
-    print("3.   Print all entries.")
-    print("4.   (VG) Delete an entry from BST.")
-    print("5.   Read from file.")
-    print("6.   Exit program.")
+    print("""1.   Add a new entry into the BST phonebook.")
+    2.   Search for an entry.
+    3.   Print all entries.
+    4.   (VG) Print BST in tree form.
+    5.   (VG) Delete an entry from BST.
+    6.   Read from file.
+    7.   Exit program.""")
 
 def read_file(filename) -> Node:
     """Read File"""
     f = open(filename, "r")
     if f == None:
         print(f"Could not open {filename}.")
-    file_contents = f.readlines()
-    count = 0
-    for line in file_contents:
-        if count % 2 == 0:
-            name = line.split(" ", 1)
-            first_name = name[0]
-            second_name = name[1]
-        else:
-            phone_nr = line
 
-    r = Node(first_name, second_name, phone_nr)
+    lines = f.readlines()
+    names = [] 
+    numbers = []
+    for i, line in enumerate(lines):
+        if i%2 == 0:
+            names.append(line)
+        if i%2 == 1:
+            numbers.append(line)
+
+    bst: Node = None
+
+    for j in range(len(numbers)):
+        first_name, second_name = names[j].split(" ")
+
+        #Remove new line from second name and number.
+        second_name = second_name.strip("\n")
+        numbers[j] = numbers[j].strip("\n")
+
+        #Insert all entries into a binary search tree.
+        bst = insert(bst, first_name, second_name, numbers[j])
+
+    #inorder(bst)
+    return bst
 

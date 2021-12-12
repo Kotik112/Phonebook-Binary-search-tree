@@ -1,15 +1,14 @@
-#TODO 
-# 1. Delete. 
-# 2. Self balancing tree.
-# 3. Read from file
+# TODO 
+# 1. Self balancing tree.
 
-from bst import Node, delete_node, search, insert, inorder
+from bst import Node, delete_node, search, insert, inorder, print_tree
 from io_phonebook import phonebook_input, name_input, main_menu, read_file
+from phonebook import Entry
 
 def main():
+
     loop = True
     bst: Node = None
-    
     
     while (loop):
         main_menu()
@@ -17,6 +16,7 @@ def main():
         #Add a new entry to the BST.
         if menu_choice == 1:
             first_name, second_name, phone_nr = phonebook_input()
+            #phonebook_entry = Entry(first_name, second_name, phone_nr)
             bst = insert(bst, first_name, second_name, phone_nr)
             
 
@@ -31,22 +31,24 @@ def main():
         elif menu_choice == 3:
             inorder(bst)
             
+        #Print the BST in tree form.
+        elif menu_choice == 4:
+            print_tree(bst)
 
         #Delete a node from the BST. VG
-        elif menu_choice == 4:
+        elif menu_choice == 5:
             name = name_input()
             delete_node(bst, name)
             print(bst)
-            
-
+        
         #Read from file.
-        elif menu_choice == 5:
-            print("TODO: Read file")
-            #read_file("data.txt") 
+        elif menu_choice == 6:
+            print("Reading file...")
+            bst = read_file("data.txt") 
             
         
         #Exit program.
-        elif menu_choice == 6:
+        elif menu_choice == 7:
             print("Exiting phonebook.")
             loop = False
             
@@ -55,4 +57,5 @@ def main():
         else:
             print("Invalid choice. Your options are 1-6.")
         
-main()   
+if __name__ == "__main__":
+    main()

@@ -4,7 +4,6 @@ def set_with_fill(list, elem, idx):
     """Inserts or replaces an element into a list at a given index. Fills out 
     all the empty spots up to the element's index with None"""
 
-
     for _ in range((idx+1) - len(list)):
         list.append(None)
 
@@ -65,7 +64,7 @@ def inorder(root):
         print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}")
         inorder(root.right)
 
-def assign_row(current: Node, row: int = 0):
+def assign_row(current: Node, row: int = 0) -> None:
     current.row = row
 
     if current.left != None:
