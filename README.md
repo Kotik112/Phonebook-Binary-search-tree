@@ -32,7 +32,7 @@ firstName2 lastName2
 
 073XXXXXX
 
--osv...
+osv...
 
 
 ### 3. Krav för väl godkänt
