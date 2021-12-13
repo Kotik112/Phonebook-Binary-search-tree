@@ -1,7 +1,7 @@
 # Binary Search Tree - Phonebook.
 ## Uppgift 1 - Datastruktur & algorithmer
 
-###1. Uppgift
+### 1. Uppgift
 - Uppgiften är att skriva en telefonbok, dvs ett program där man man sparar
 namn och telefonnummer. Datastrukturen skall vara ett binärt sökträd, sorterat
 efter namnet.
