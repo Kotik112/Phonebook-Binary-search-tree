@@ -58,12 +58,12 @@ def insert(node, first_name, second_name, phone_nr):
     return node
 
 #Hur funkar denna?
-def inorder(root):
+def print_inorder(root):
     """Prints the BST in ascending order."""
     if root:
-        inorder(root.left)
+        print_inorder(root.left)
         print(f"Name: {root.first_name} {root.second_name}.\nPhone number: {root.phone_nr}\n")
-        inorder(root.right)
+        print_inorder(root.right)
 
 def assign_row(current: Node, row: int = 0) -> None:
     current.row = row
@@ -188,7 +188,7 @@ def main():
     r = insert(r, "Rashid", "Waraich", 1875718)
     r = insert (r, "ZZ-----", "Top", 111)
 
-    inorder(r)
+    print_inorder(r)
     print("\n")
 
     print_tree(r)

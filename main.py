@@ -1,7 +1,7 @@
 # TODO 
 # 1. Self balancing tree.
 
-from bst import Node, delete_node, search, insert, inorder, print_tree
+from bst import Node, delete_node, search, insert, print_inorder, print_tree
 from phonebook import phonebook_input, name_input, main_menu, read_file
 
 def main():
@@ -27,7 +27,7 @@ def main():
 
         #Print the BST in ascending order.
         elif menu_choice == 3:
-            inorder(bst)
+            print_inorder(bst)
             
         #Print the BST in tree form.
         elif menu_choice == 4:
