@@ -112,7 +112,7 @@ def print_tree(root: Node):
                 print("     ", end='')
             else:
                 print(col.first_name, end='')
-        print()
+        print() #new line at the end
 
 
 def min_value_node(node):
