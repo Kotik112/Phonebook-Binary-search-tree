@@ -1,5 +1,5 @@
 from typing import List
-
+5
 
 class Node:
     def __init__(self, first_name, second_name, phone_nr) -> None:
